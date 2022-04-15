@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+
+        <title>Urun</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:commandButton action="/index" value="Home"/>         
+        </h:form>
+        <hr></hr>
+        <h3>Urun Listesi</h3>
+        <h:form>
+            Kategoriler
+            <h:selectOneMenu value="#{urunBean.entity.kategori}" converter="kategoriConverter">
+                <f:selectItems value="#{kategoriBean.list}" var="k" itemValue="#{k}" itemLabel="#{k.isim}"/>
+            </h:selectOneMenu>
+      
+            <br/>
+            Ad:<h:inputText value="#{urunBean.entity.isim}"/><br/>
+            Fiyat:<h:inputText value="#{urunBean.entity.fiyat}"/><br/>
+            Stok:<h:inputText value="#{urunBean.entity.stok}"/><br/>
+
+            <h:commandButton rendered="#{urunBean.entity.id==0}" action="#{urunBean.create()}" value="Create"/>
+            <h:commandButton rendered="#{urunBean.entity.id!=0}" action="#{urunBean.update()}" value="Update"/>
+            <h:commandButton rendered="#{urunBean.entity.id!=0}" action="#{urunBean.clear()}" value="Clear"/>
+        </h:form>
+        <hr />
+        <h:form>
+            <h:dataTable border="1" value="#{urunBean.list}" var="entity">
+                <h:column>
+                    <f:facet name="header">ID</f:facet>
+                        #{entity.id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">KATEGORİ</f:facet>
+                        #{entity.kategori.isim}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">AD</f:facet>
+                        #{entity.isim}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">FİYAT</f:facet>
+                        #{entity.fiyat}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">STOK</f:facet>
+                        #{entity.stok}
+                </h:column>
+                
+
+                <h:column>
+                    <f:facet name="header">DÜZENLEME</f:facet>
+                    <h:commandButton action="#{urunBean.delete(entity)}" value="SİL"/>
+                    <h:commandButton action="#{urunBean.setEntity(entity)}" value="Güncelle"/>
+                </h:column>
+
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>
