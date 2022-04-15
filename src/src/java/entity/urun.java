@@ -8,22 +8,22 @@ package entity;
  *
  * @author Oguzhan
  */
-public class urunler {
+public class urun {
     private int id;
     private kategori kategori;
     private String isim;
     private int fiyat;
     private int stok;
 
-    public urunler() {
+    public urun() {
     }
 
-    public urunler(int id, String isim) {
+    public urun(int id, String isim) {
         this.id = id;
         this.isim = isim;
     }
 
-    public urunler(int id, kategori kategori, String isim, int fiyat, int stok) {
+    public urun(int id, kategori kategori, String isim, int fiyat, int stok) {
         this.id = id;
         this.kategori = kategori;
         this.isim = isim;
@@ -89,7 +89,7 @@ public class urunler {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final urunler other = (urunler) obj;
+        final urun other = (urun) obj;
         return this.id == other.id;
     }
     

@@ -3,28 +3,28 @@ package dao;
 
 
 import entity.kategori;
-import entity.urunler;
+import entity.urun;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import util.DBConnection;
 
-public class urunlerDAO extends DBConnection {
+public class urunDAO extends DBConnection {
 
     private kategoriDAO kategoriDao;
    
     
 
-    public urunler findByID(int id) {
-        urunler u = null;
+    public urun findByID(int id) {
+        urun u = null;
 
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "select * from urunler where id=" + id;
+            String query = "select * from urun where id=" + id;
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                u = new urunler(rs.getInt("id"), rs.getString("isim"));
+                u = new urun(rs.getInt("id"), rs.getString("isim"));
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -33,11 +33,11 @@ public class urunlerDAO extends DBConnection {
         return u;
     }
 
-    public void create(urunler u) {
+    public void create(urun u) {
         try {
             Statement st = this.getConnection().createStatement();
 
-            String query = "insert into urunler (kategori_id,isim,fiyat,stok) values (" + u.getKategori().getId() + ",'" + u.getIsim()+ "','" + u.getFiyat() + "','" + u.getStok() + "')";
+            String query = "insert into urun (kategori_id,isim,fiyat,stok) values (" + u.getKategori().getId() + ",'" + u.getIsim()+ "','" + u.getFiyat() + "','" + u.getStok() + "')";
             st.executeUpdate(query);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -45,10 +45,10 @@ public class urunlerDAO extends DBConnection {
         }
     }
 
-    public void update(urunler u) {
+    public void update(urun u) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "update urunler set kategori_id=" + u.getKategori().getId() + ",isim='" + u.getIsim() + "',fiyat='" + u.getFiyat() + "',stok='" + u.getStok() + "'where id=" + u.getId();//idyi silebilirim
+            String query = "update urun set kategori_id=" + u.getKategori().getId() + ",isim='" + u.getIsim() + "',fiyat='" + u.getFiyat() + "',stok='" + u.getStok() + "'where id=" + u.getId();//idyi silebilirim
             st.executeUpdate(query);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -56,10 +56,10 @@ public class urunlerDAO extends DBConnection {
         }
     }
 
-    public void delete(urunler u) {
+    public void delete(urun u) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "delete from urunler where id=" + u.getId();
+            String query = "delete from urun where id=" + u.getId();
             st.executeUpdate(query);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -67,15 +67,15 @@ public class urunlerDAO extends DBConnection {
         }
     }
 
-    public List<urunler> getList() {
-        List<urunler> list = new ArrayList<>();
+    public List<urun> getList() {
+        List<urun> list = new ArrayList<>();
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "select * from urunler";
+            String query = "select * from urun";
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
                 kategori k = this.getKategoriDao().findByID(rs.getInt("kategori_id"));
-                list.add(new urunler(rs.getInt("id"), k, rs.getString("isim"), rs.getInt("fiyat"),rs.getInt("stok")));
+                list.add(new urun(rs.getInt("id"), k, rs.getString("isim"), rs.getInt("fiyat"),rs.getInt("stok")));
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());

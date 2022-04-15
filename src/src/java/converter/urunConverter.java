@@ -4,41 +4,41 @@
  */
 package converter;
 
-import dao.urunlerDAO;
-import entity.urunler;
+import dao.urunDAO;
+import entity.urun;
 import jakarta.faces.component.UIComponent;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.convert.Converter;
 import jakarta.faces.convert.FacesConverter;
 
 
-@FacesConverter("urunlerConverter")
-public class urunlerConverter implements Converter{
+@FacesConverter("urunConverter")
+public class urunConverter implements Converter{
 
-    private urunlerDAO urunlerDao;
+    private urunDAO urunDao;
 
     @Override
     public Object getAsObject(FacesContext fc, UIComponent uic, String string) {
         int id = Integer.valueOf(string);
-        urunler u = this.getUrunlerDao().findByID(id);
+        urun u = this.getUrunDao().findByID(id);
         return u;
     }
 
     @Override
     public String getAsString(FacesContext fc, UIComponent uic, Object t) {
-        urunler u = (urunler) t;
+        urun u = (urun) t;
         return String.valueOf(u.getId());
     }
 
-    public urunlerDAO getUrunlerDao() {
-        if (urunlerDao == null) {
-            this.urunlerDao = new urunlerDAO();
+    public urunDAO getUrunDao() {
+        if (urunDao == null) {
+            this.urunDao = new urunDAO();
         }
-        return urunlerDao;
+        return urunDao;
     }
 
-    public void setUrunlerDao(urunlerDAO urunlerDao) {
-        this.urunlerDao = urunlerDao;
+    public void setUrunDao(urunDAO urunDao) {
+        this.urunDao = urunDao;
     }
 
 }

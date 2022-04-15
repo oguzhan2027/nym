@@ -4,76 +4,76 @@
  */
 package controller;
 
-import dao.urunlerDAO;
-import entity.urunler;
+import dao.urunDAO;
+import entity.urun;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 
-@Named(value = "urunlerBean")
+@Named(value = "urunBean")
 @SessionScoped
-public class urunlerBean implements Serializable {
+public class urunBean implements Serializable {
 
-    private urunler entity;
-    private urunlerDAO dao;
-    private List<urunler> list;
+    private urun entity;
+    private urunDAO dao;
+    private List<urun> list;
 
-    public urunlerBean() {
+    public urunBean() {
     }
   public String getTitle(int id) {
-        urunler c = this.getDao().findByID(id);
+        urun c = this.getDao().findByID(id);
         return c.getIsim();
     }
 
 
     public void create() {
         this.getDao().create(entity);
-        entity = new urunler();
+        entity = new urun();
     }
 
     public void update() {
         this.getDao().update(entity);
-        entity = new urunler();
+        entity = new urun();
     }
 
-    public void delete(urunler p) {
+    public void delete(urun p) {
         this.getDao().delete(p);
-        entity = new urunler();
+        entity = new urun();
     }
 
     public void clear() {
-        entity = new urunler();
+        entity = new urun();
     }
 
-    public urunler getEntity() {
+    public urun getEntity() {
         if (this.entity == null) {
-            this.entity = new urunler();
+            this.entity = new urun();
         }
         return entity;
     }
 
-    public void setEntity(urunler entity) {
+    public void setEntity(urun entity) {
         this.entity = entity;
     }
 
-    public urunlerDAO getDao() {
+    public urunDAO getDao() {
         if (this.dao == null) {
-            this.dao = new urunlerDAO();
+            this.dao = new urunDAO();
         }
         return dao;
     }
 
-    public void setDao(urunlerDAO dao) {
+    public void setDao(urunDAO dao) {
         this.dao = dao;
     }
 
-    public List<urunler> getList() {
+    public List<urun> getList() {
         this.list = this.getDao().getList();
         return list;
     }
 
-    public void setList(List<urunler> list) {
+    public void setList(List<urun> list) {
         this.list = list;
     }
 }
