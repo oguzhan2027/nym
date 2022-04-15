@@ -13,7 +13,7 @@
         <hr></hr>
         <h3>Kategori Listesi</h3>
         <h:form>
-            Kategori İsmi:<h:inputText value="#{kategoriBean.entity.kategoriAd}"/><br/>
+            Kategori İsmi:<h:inputText value="#{kategoriBean.entity.isim}"/><br/>
             <h:commandButton rendered="#{kategoriBean.entity.id==0}" action="#{kategoriBean.create()}" value="Create"/>
             <h:commandButton rendered="#{kategoriBean.entity.id!=0}" action="#{kategoriBean.update()}" value="Update"/>
             <h:commandButton rendered="#{kategoriBean.entity.id!=0}" action="#{kategoriBean.clear()}" value="Clear"/>
@@ -28,7 +28,7 @@
 
                 <h:column>
                     <f:facet name="header">KategoriAd</f:facet>
-                        #{entity.kategoriAd}
+                        #{entity.isim}
                 </h:column>
                 
                 <h:column>

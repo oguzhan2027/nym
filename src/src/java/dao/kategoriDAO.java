@@ -33,7 +33,7 @@ public class kategoriDAO extends DBConnection {
     public void create(kategori k) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "insert into kategori (isim) values ('"+ k.getIsim() + "')";
+            String query = "insert into kategori (isim) values ('"+ k.getIsim()+ "')";
             st.executeUpdate(query);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -44,7 +44,7 @@ public class kategoriDAO extends DBConnection {
     public void update(kategori k) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "update kategori set isim='" + k.getIsim() + "'where id=" + k.getId();
+            String query = "update kategori set isim='" + k.getIsim()+ "'where id=" + k.getId();
             st.executeUpdate(query);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -70,7 +70,7 @@ public class kategoriDAO extends DBConnection {
             String query = "select * from kategori";
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                list.add(new kategori(rs.getInt("id"), rs.getString("ad")));
+                list.add(new kategori(rs.getInt("id"), rs.getString("isim")));
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());

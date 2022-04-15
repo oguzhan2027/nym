@@ -6,10 +6,7 @@ package entity;
 
 import java.util.Objects;
 
-/**
- *
- * @author Oguzhan
- */
+
 public class kategori {
     private int id;
     private String isim;
@@ -38,11 +35,14 @@ public class kategori {
         this.isim = isim;
     }
 
+   
+    
+
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 67 * hash + this.id;
-        hash = 67 * hash + Objects.hashCode(this.isim);
+        int hash = 7;
+        hash = 23 * hash + this.id;
+        hash = 23 * hash + Objects.hashCode(this.isim);
         return hash;
     }
 
@@ -58,9 +58,13 @@ public class kategori {
             return false;
         }
         final kategori other = (kategori) obj;
-        return true;
+        if (this.id != other.id) {
+            return false;
+        }
+        return Objects.equals(this.isim, other.isim);
     }
-    
+
+   
     
     
 }

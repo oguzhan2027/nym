@@ -9,7 +9,7 @@ private Connection connection;
         if(this.connection==null){
             try {
             Class.forName("org.postgresql.Driver");
-            this.connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/nym", "postgres", "12345");
+            this.connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/nymlab", "postgres", "12345");
 
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
