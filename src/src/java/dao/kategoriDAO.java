@@ -62,7 +62,7 @@ public class kategoriDAO extends DBConnection {
 
         }
     }
-
+ 
     public List<kategori> getList() {
         List<kategori> list = new ArrayList<>();
         try {

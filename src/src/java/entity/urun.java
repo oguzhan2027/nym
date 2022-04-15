@@ -91,7 +91,7 @@ public class urun {
         }
         final urun other = (urun) obj;
         return this.id == other.id;
-    }
+    } 
     
     
    

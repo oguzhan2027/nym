@@ -46,7 +46,7 @@ public class urunDAO extends DBConnection {
     }
 
     public void update(urun u) {
-        try {
+        try { 
             Statement st = this.getConnection().createStatement();
             String query = "update urun set kategori_id=" + u.getKategori().getId() + ",isim='" + u.getIsim() + "',fiyat='" + u.getFiyat() + "',stok='" + u.getStok() + "'where id=" + u.getId();//idyi silebilirim
             st.executeUpdate(query);

@@ -69,7 +69,7 @@ public class musteri {
         hash = 17 * hash + this.id;
         hash = 17 * hash + Objects.hashCode(this.isim);
         return hash;
-    }
+    } 
 
     @Override
     public boolean equals(Object obj) {

@@ -40,5 +40,5 @@ public class urunConverter implements Converter{
     public void setUrunDao(urunDAO urunDao) {
         this.urunDao = urunDao;
     }
-
+ 
 }

@@ -9,7 +9,7 @@ import java.util.List;
 
 
 @Named(value = "kategoriBean")
-@SessionScoped
+@SessionScoped 
 public class kategoriBean implements Serializable {
 
     private kategori entity;

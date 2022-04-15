@@ -12,7 +12,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Named(value = "urunBean")
-@SessionScoped
+@SessionScoped 
 public class urunBean implements Serializable {
 
     private urun entity;
