@@ -65,11 +65,13 @@ public class musteri {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 17 * hash + this.id;
-        hash = 17 * hash + Objects.hashCode(this.isim);
+        int hash = 7;
+        hash = 43 * hash + this.id;
+        hash = 43 * hash + Objects.hashCode(this.isim);
+        hash = 43 * hash + Objects.hashCode(this.soyisim);
+        hash = 43 * hash + Objects.hashCode(this.tlf);
         return hash;
-    } 
+    }
 
     @Override
     public boolean equals(Object obj) {
@@ -86,8 +88,18 @@ public class musteri {
         if (this.id != other.id) {
             return false;
         }
-        return Objects.equals(this.isim, other.isim);
+        if (!Objects.equals(this.isim, other.isim)) {
+            return false;
+        }
+        if (!Objects.equals(this.soyisim, other.soyisim)) {
+            return false;
+        }
+        return Objects.equals(this.tlf, other.tlf);
     }
+    
+    
+
+ 
     
     
     
